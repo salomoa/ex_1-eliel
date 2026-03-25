@@ -14,15 +14,15 @@ public class LivroService {
     @Autowired
     private LivroRepository livroRepository;
 
-    public List<LivroModel> findAll(){
+    public List<LivroModel> buscarTodosLivros(){
         return  livroRepository.findAll();
     }
 
-    public LivroModel criarPessoa(LivroModel livroModel){
+    public LivroModel criarLivro(LivroModel livroModel){
         return  livroRepository.save(livroModel);
     }
 
-    public Optional<LivroModel> buscarid(Long id){
+    public Optional<LivroModel> buscarLivroId(Long id){
         return  livroRepository.findById(id);
     }
 

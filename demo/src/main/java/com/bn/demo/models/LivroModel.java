@@ -10,7 +10,9 @@ public class LivroModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
+    @Column(name = "escritor")
     private String autor;
+    @Column(name = "ano_pub")
     private Integer anoPublicacao;
 
     public Long getId() {
@@ -20,8 +22,6 @@ public class LivroModel {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Column(name = "escritor")
     public String getAutor() { return autor; }
 
     public void setAutor(String autor) { this.autor = autor; }
@@ -30,7 +30,6 @@ public class LivroModel {
 
     public void setTitulo(String titulo) { this.titulo = titulo; }
 
-    @Column(name = "ano_pub")
     public Long getAnoPublicacao() { return anoPublicacao; }
 
     public void setAnoPublicacao(Long anoPublicacao) { this.anoPublicacao = anoPublicacao; }

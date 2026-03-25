@@ -19,14 +19,14 @@ public class LivroController {
     private LivroService livroService;
 
     @GetMapping
-        public ResponseEntity<List<LivroModel> > findAll(){
-          List<LivroModel> requeste = livroService.findAll();
+        public ResponseEntity<List<LivroModel> > buscarTodosOsLivros(){
+          List<LivroModel> requeste = livroService.buscarTodosLivros();
         return ResponseEntity.ok().body(requeste);
     }
 
     @PostMapping
-    public ResponseEntity <LivroModel> criarPessoa(@RequestBody LivroModel livroModel){
-        LivroModel requeste = livroService.criarPessoa(livroModel);
+    public ResponseEntity <LivroModel> criarLivros(@RequestBody LivroModel livroModel){
+        LivroModel requeste = livroService.criarLivro(livroModel);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(livroModel.getId())
                 .toUri();
@@ -40,17 +40,14 @@ public class LivroController {
     }
 
     @GetMapping("/{id}")
-    public Optional<LivroModel> buscarId(@PathVariable Long id){
-        return  livroService.buscarid(id);
+    public Optional<LivroModel> buscarIdLivro(@PathVariable Long id){
+        return  livroService.buscarLivroId(id);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity <LivroModel> atualizar(@PathVariable Long id, @RequestBody LivroModel LivroModel){
         LivroModel requeste = livroService.atualizar(id, LivroModel);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
-                .path("/{id}").buildAndExpand(LivroModel.getId())
-                .toUri();
-        return  ResponseEntity.created(uri).body(requeste);
+        return  ResponseEntity.ok().body(requeste);
 
     }
 
